@@ -55,7 +55,7 @@ function my_pade = my_pade(f, m, k, x)
         end
     end
 
-    % p(k) and q(k)
+    % p(m) and q(k)
     vp = 0;
     for i = 0:m
         vp = vp + A(i + 1) * x^i;
