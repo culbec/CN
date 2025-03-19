@@ -3,8 +3,7 @@ function my_pade = my_pade(f, m, k, x)
     % f -> the function
     % m -> the degree of the denumerator
     % k -> the degree of the denominator
-    % x -> variable of computation
-    syms T_C 
+    % x -> variable of computation 
 
     % c_k coefficients
     C = zeros(m+k+1, 1, 'sym');
