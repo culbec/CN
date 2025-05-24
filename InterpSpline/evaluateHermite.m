@@ -1,5 +1,10 @@
 function val = evaluateHermite(xx, x, a, b, c, d)
-    %% EVALUATEHERMITE Evaluates the Hermite spline at points xx.
+    %%  EVALUATEHERMITE Evaluates the Hermite spline at points xx.
+    %   
+    %   Inputs:
+    %   - xx:   evaluation points;
+    %   - x:    known knots of the interpolated spline;
+    %   - a, b, c, d:   coefficients of the cubic spline;
     %%
     val = zeros(size(xx));
     n = length(a);
