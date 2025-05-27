@@ -1,0 +1,476 @@
+% This LaTeX was auto-generated from MATLAB code.
+% To make changes, update the MATLAB code and export to LaTeX again.
+
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{epstopdf}
+\usepackage[table]{xcolor}
+\usepackage{matlab}
+
+\sloppy
+\epstopdfsetup{outdir=./}
+\graphicspath{ {./set2_images/} }
+
+\begin{document}
+
+\matlabheading{\underline{\textbf{Problema 1}}}
+
+\begin{par}
+\begin{flushleft}
+Să se determine o formulă de cuadratură de forma
+\end{flushleft}
+\end{par}
+
+\begin{par}
+$$\int_{-1}^1 f(t)dt=A_1 f(-1)+A_2 f(-1)+A_3 f(t_3 )+A_4 f(t_4 )+R(f)$$
+\end{par}
+
+\begin{par}
+\begin{flushleft}
+care să aibă grad maxim de exactitate. Dacă neglijăm restul (eroarea), integrala se poate aproxima prin:
+\end{flushleft}
+\end{par}
+
+\begin{par}
+$$\int_{-1}^1 f(t)dt\approx A_1 f(-1)+A_2 f(-1)+A_3 f(t_3 )+A_4 f(t_4 )$$
+\end{par}
+
+\begin{par}
+\begin{flushleft}
+Fiindca dorim ca formula de cuadratură să aibă grad maxim de exactitate, adică pentru toate polinoamele cu grad \textless{}= n, integrala:
+\end{flushleft}
+\end{par}
+
+\begin{par}
+\begin{flushleft}
+$\int_{-1}^1 f(t)dt=A_1 f(-1)+A_2 f(-1)+A_3 f(t_3 )+A_4 f(t_4 )$, pentru toate polinoamele $\mathbb{P}\in {\mathbb{P}}_n$.
+\end{flushleft}
+\end{par}
+
+\begin{par}
+\begin{flushleft}
+Căutăm o formulă de cuadratură $F(f)=\int_0^{\infty } w(t)f(t)dt$ care este exactă, anume aplicând formula asupra funcției, obținem chiar valorile integralei. Integrala de aproximat este apropiată de o cuadratură de tip \textbf{Gauss-Legendre}, insă ne încurcă apariția derivatei $f^{\prime } (-1)$. Alegem funcțiile de test $f(t)=1,t,t^2 ,t^3 ,\dots$, deoarece acestea se pretează cuadraturilor de tip Gauss-Laguerre, putând face o paralelă cu aceste tipuri de cuadraturi.
+\end{flushleft}
+\end{par}
+
+\begin{par}
+\begin{flushleft}
+Stim ca $\int_{-1}^1 t^k dt=\frac{t^{k+1} }{k+1}|_{-1}^1 =\frac{1-(-1)^{k+1} }{k+1}$. Avem 6 necunoscute, asa ca alegem functiile de test: $1,t,t^2 ,t^3 ,t^4 ,t^5$ pentru a nu limita cuadratura prin alegerea punctelor fixe $t_3 ,t_4$. Rezulta urmatorul tabel:
+\end{flushleft}
+\end{par}
+
+\begin{par}
+$$\left\lbrack \begin{array}{cccccc}
+f\left(t\right) & f\left(-1\right) & f^{\prime } \left(-1\right) & f\left(t_3 \right) & f\left(t_4 \right) & \int_{-1}^1 f\left(t\right)\mathrm{dt}\\
+1 & 1 & 0 & 1 & 1 & 2\\
+t & -1 & 1 & t_3  & t_4  & 0\\
+t^2  & 1 & -2 & t_3^2  & t_4^2  & \frac{1}{2}\\
+t^3  & -1 & 3 & t_3^3  & t_4^3  & 0\\
+t^4  & 1 & -4 & t_3^4  & t_4^4  & \frac{2}{5}\\
+t^5  & -1 & 5 & t_3^5  & t_4^5  & 0
+\end{array}\right\rbrack$$
+\end{par}
+
+\begin{par}
+\begin{flushleft}
+Folosind valorile din tabel, ajungem la urmatorul sistem:
+\end{flushleft}
+\end{par}
+
+\begin{par}
+$$\begin{array}{l}
+f\left(t\right)=1:A_1 +A_3 +A_4 =2\\
+f\left(t\right)=t:-A_1 +A_2 +t_3 A_3 +t_4 A_4 =0\\
+f\left(t\right)=t^2 :A_1 -2A_2 +t_3^2 A_3 +t_4^2 A_4 =\frac{1}{2}\\
+f\left(t\right)=t^3 :-A_1 +3A_2 +t_3^3 A_3 +t_4^3 A_4 =0\\
+f\left(t\right)=t^4 :A_1 -4A_2 +t_3^4 A_3 +t_4^4 A_4 =\frac{2}{5}\\
+f\left(t\right)=t^5 :-A_1 +5A_2 +t_3^5 A_3 +t_4^5 =0
+\end{array}$$    $$\Rightarrow$$ $$\begin{array}{l}
+A_1 +A_3 +A_4 =2\\
+-A_1 +A_2 +t_3 A_3 +t_4 A_4 =0\\
+A_1 -2A_2 +t_3^2 A_3 +t_4^2 A_4 =\frac{1}{2}\\
+-A_1 +3A_2 +t_3^3 A_3 +t_4^3 A_4 =0\\
+A_1 -4A_2 +t_3^4 A_3 +t_4^4 A_4 =\frac{2}{5}\\
+-A_1 +5A_2 +t_3^5 A_3 +t_4^5 =0
+\end{array}$$
+\end{par}
+
+\matlabheadingtwo{Rezolvam sistemul:}
+
+\begin{par}
+$$\begin{array}{l}
+A_1 =2-A_3 -A_4 \\
+A_2 =2-A_3 \left(1+t_3 \right)-A_4 \left(1+t_4 \right)\\
+-2+A_3 +A_4 -4+2A_3 +2t_3 A_3 +2A_4 +2t_4 A_4 +t_3^2 A_3 +t_4^2 A_4 =\frac{1}{2}\\
+\Leftrightarrow -2+A_3 \left(t_3^2 +2t_3 +1\right)=\frac{1-2A_4 \left(t_4^2 +3t_4 +1\right)}{2}\Leftrightarrow A_3 =\frac{5-2A_4 \left(t_4^2 +3t_4 +1\right)}{t_3^2 +2t_3 +1}
+\end{array}$$
+\end{par}
+
+\begin{par}
+\begin{flushleft}
+Sistem neliniar daca lasam $t_3 ,t_4$ nefixate. Am putea lua radacinile polinomului Legendre de gradul 2, insa putem folosi si MATLAB Symbolic pentru a rezolva.
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+syms A1 A2 A3 A4 t3 t4
+
+eq1 = A1 + A3 + A4 == 2;
+eq2 = -A1 + A2 + t3 .* A3 + t4 .* A4 == 0;
+eq3 = A1 - 2 * A2 + t3 .^ 2 .* A3 + t4 .^ 2 .* A4 == 1/2;
+eq4 = -A1 + 3 * A2 + t3 .^ 3 .* A3 + t4 .^ 3 .* A4 == 0;
+eq5 = A1 - 4 * A2 + t3 .^ 4 .* A3 + t4 .^ 4 .* A4 == 2/5;
+eq6 = -A1 + 5 * A2 + t3 .^ 5 .* A3 + t4 .^ 5 .* A4 == 0;
+
+solution = solve([eq1, eq2, eq3, eq4, eq5, eq6], [A1, A2, A3, A4, t3, t4]);
+fields = fieldnames(solution);
+for i = 1:length(fields)
+    fprintf('%s = ', fields{i});
+    disp(vpa(solution.(fields{i}), 6))
+    fprintf('\n');
+end
+\end{matlabcode}
+\begin{matlaboutput}
+A1 = 
+\end{matlaboutput}
+\begin{matlabsymbolicoutput}
+\hskip1em $\displaystyle \left(\begin{array}{c}
+0.294707\\
+0.294707
+\end{array}\right)$
+\end{matlabsymbolicoutput}
+\begin{matlaboutput}
+A2 = 
+\end{matlaboutput}
+\begin{matlabsymbolicoutput}
+\hskip1em $\displaystyle \left(\begin{array}{c}
+0.0235043\\
+0.0235043
+\end{array}\right)$
+\end{matlabsymbolicoutput}
+\begin{matlaboutput}
+A3 = 
+\end{matlaboutput}
+\begin{matlabsymbolicoutput}
+\hskip1em $\displaystyle \left(\begin{array}{c}
+0.319098\\
+1.3862
+\end{array}\right)$
+\end{matlabsymbolicoutput}
+\begin{matlaboutput}
+A4 = 
+\end{matlaboutput}
+\begin{matlabsymbolicoutput}
+\hskip1em $\displaystyle \left(\begin{array}{c}
+1.3862\\
+0.319098
+\end{array}\right)$
+\end{matlabsymbolicoutput}
+\begin{matlaboutput}
+t3 = 
+\end{matlaboutput}
+\begin{matlabsymbolicoutput}
+\hskip1em $\displaystyle \left(\begin{array}{c}
+0.888999\\
+-0.00899889
+\end{array}\right)$
+\end{matlabsymbolicoutput}
+\begin{matlaboutput}
+t4 = 
+\end{matlaboutput}
+\begin{matlabsymbolicoutput}
+\hskip1em $\displaystyle \left(\begin{array}{c}
+-0.00899889\\
+0.888999
+\end{array}\right)$
+\end{matlabsymbolicoutput}
+
+\matlabheadingtwo{Solutia finala:}
+
+\begin{par}
+$$A1=\left(\begin{array}{c}
+0.294707\\
+0.294707
+\end{array}\right)A2=\left(\begin{array}{c}
+0.0235043\\
+0.0235043
+\end{array}\right)A3=\left(\begin{array}{c}
+0.319098\\
+1.3862
+\end{array}\right)A4=\left(\begin{array}{c}
+1.3862\\
+0.319098
+\end{array}\right)t3=\left(\begin{array}{c}
+0.888999\\
+-0.00899889
+\end{array}\right)t4=\left(\begin{array}{c}
+-0.00899889\\
+0.888999
+\end{array}\right)$$
+\end{par}
+
+\matlabheadingtwo{Eroarea:}
+
+\begin{par}
+\begin{flushleft}
+$R(f)=\frac{f^{(6)} (\xi )}{6!}\cdot \int_{-1}^1 \omega (t)dt$, $\int_{-1}^1 \omega (t)dt=\int_{-1}^1 (t+1)^2 (t-t_3 )(t-t_4 )dt=\frac{8t_3 t_4 }{3}-\frac{4t_4 }{3}-\frac{4t_3 }{3}+\frac{16}{15}=-0.128$
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+syms t t3 t4
+
+omega = (t+1) .^ 2 .* (t - t3) .* (t - t4);
+int_omega = int(omega, t, -1, 1);
+fprintf("I_omega = ");
+\end{matlabcode}
+\begin{matlaboutput}
+I_omega = 
+\end{matlaboutput}
+\begin{matlabcode}
+disp(int_omega);
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+\hskip1em $\displaystyle \frac{8\,t_3 \,t_4 }{3}-\frac{4\,t_4 }{3}-\frac{4\,t_3 }{3}+\frac{16}{15}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+fprintf("\n");
+
+omega_known = (t+1) .^ 2 .* (t - 0.888999) .* (t + 0.00899889);
+int_omega_known = int(omega_known, t, -1, 1);
+fprintf("I_omega = ");
+\end{matlabcode}
+\begin{matlaboutput}
+I_omega = 
+\end{matlaboutput}
+\begin{matlabcode}
+disp(vpa(int_omega_known, 6));
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+\hskip1em $\displaystyle -0.128$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+fprintf("\n");
+\end{matlabcode}
+
+\begin{par}
+$$R_1 \left(f\right)=R_2 \left(f\right)=R\left(f\right)=-\frac{f^{\left(6\right)} \left(\xi \right)}{6!}\cdot 0\ldotp 128,\xi \in \left(-1,1\right)$$
+\end{par}
+
+\matlabheadingtwo{Rezulta 2 formule de cuadratura:}
+
+\begin{par}
+$$\int_{-1}^1 f\left(t\right)\mathrm{dt}=0\ldotp 294707\cdot f\left(-1\right)+0\ldotp 0235043\cdot f^{\prime } \left(-1\right)+0\ldotp 319098\cdot f\left(0\ldotp 888999\right)+1\ldotp 3862\cdot f\left(-0\ldotp 00899889\right)-\frac{f^{\left(6\right)} \left(\xi \right)}{6!}\cdot 0\ldotp 128,\xi \in \left(-1,1\right)$$
+\end{par}
+
+\begin{par}
+$$\int_{-1}^1 f\left(t\right)\mathrm{dt}=0\ldotp 294707\cdot f\left(-1\right)+0\ldotp 0235043\cdot f^{\prime } \left(-1\right)+1\ldotp 3862\cdot f\left(-0\ldotp 00899889\right)+\;0\ldotp 319098\cdot f\left(0\ldotp 888999\right)-\frac{f^{\left(6\right)} \left(\xi \right)}{6!}\cdot 0\ldotp 128,\xi \in \left(-1,1\right)$$
+\end{par}
+
+\begin{matlabcode}
+f = @(t) exp(t);
+df = @(t) exp(t);
+I_exact = integral(@(t) f(t), -1, 1);
+
+A1 = 0.294707;
+A2 = 0.235043;
+A3 = 0.319098;
+A4 = 1.3862;
+t3 = 0.888999;
+t4 = -0.00899889;
+
+I_approx = A1 * f(-1) + A2 * df(-1) + A3 * f(t3) + A4 * f(t4);
+R = I_exact - I_approx;
+
+fprintf("### I_EXACT: %.16e\n", I_exact);
+\end{matlabcode}
+\begin{matlaboutput}
+### I_EXACT: 2.3504023872876028e+00
+\end{matlaboutput}
+\begin{matlabcode}
+fprintf("### I_APPROX: %.16e\n", I_approx);
+\end{matlabcode}
+\begin{matlaboutput}
+### I_APPROX: 2.3449334005032796e+00
+\end{matlaboutput}
+\begin{matlabcode}
+fprintf("### REST: %.16e\n", R);
+\end{matlabcode}
+\begin{matlaboutput}
+### REST: 5.4689867843231710e-03
+\end{matlaboutput}
+
+
+\matlabheading{\underline{\textbf{Problema 2}}}
+
+\begin{par}
+\begin{flushleft}
+Fie ecuatia $f(x)=0,f:[a,b]\to \mathbb{R},f\in C^3 [a,b]$ si $\alpha$ o radacina simpla a ei.
+\end{flushleft}
+\end{par}
+
+\begin{par}
+\begin{flushleft}
+a) Sa se arate ca
+\end{flushleft}
+\end{par}
+
+\begin{par}
+$$x_{k+1} =x_k -2\frac{f\left(x_k \right)}{f^{\prime } \left(x_k \right)\left(1+\sqrt{1-\frac{2f\left(x_k \right){f^{\prime } }^{\prime } \left(x_k \right)}{f^{\prime } {\left(x_k \right)}^2 }}\right)}$$
+\end{par}
+
+\begin{par}
+\begin{flushleft}
+genereaza un sir care converge cubic.
+\end{flushleft}
+\end{par}
+
+\begin{par}
+\begin{flushleft}
+Pentru a arata ca metoda iterativa genereaza un sir care converge cubic, putem folosi eroarea $R_k =x_k -\alpha$ si sa demonstram faptul ca $R_{k+1} =C\cdot R_k^3 \;+\;O\left(R_k^4 \right),C\;\mathrm{constanta}$. Asta inseamna sa demonstram ca $R_{k+1} \in O\left(R_k^3 \right)$.
+\end{flushleft}
+\end{par}
+
+\begin{par}
+\begin{flushleft}
+Stim faptul ca $f\in C^3 \left\lbrack a,b\right\rbrack$, deci ne putem folosi de \textbf{dezvoltarea Taylor} in jurul lui $\alpha$ pentru a rezolva problema.
+\end{flushleft}
+\end{par}
+
+\begin{par}
+$$\begin{array}{l}
+f\left(x_k \right)=f\left(\alpha +R_k \right)=f\left(\alpha \right)+R_k \cdot f^{\prime } \left(\alpha \right)+\frac{R_k^2 }{2!}\cdot f^{\prime \prime } \left(\alpha \right)+\frac{R_k^3 }{3!}\cdot f^{\left(3\right)} \left(\xi_k \right)\\
+f^{\prime } \left(x_k \right)=f^{\prime } \left(\alpha +R_k \right)=f^{\prime } \left(\alpha \right)+R_k \cdot {f^{\prime } }^{\prime } \left(\alpha \right)+\frac{R_k^2 }{2!}\cdot f^{\left(3\right)} \left(\eta_k \right)\\
+{f^{\prime } }^{\prime } \left(x_k \right)={f^{\prime } }^{\prime } \left(\alpha +R_k \right)={f^{\prime } }^{\prime } \left(\alpha \right)+R_k \cdot f^{\left(3\right)} \left(\gamma_k \right),\\
+\mathrm{unde}\;R_k =x_k -\alpha \;\;\mathrm{si}\;\xi_k ,\eta_k ,\gamma_k \in \left(\alpha ,x_k \right)\ldotp 
+\end{array}$$
+\end{par}
+
+\begin{par}
+\begin{flushleft}
+Cunoastem faptul ca $\alpha$ este o radacina simpla a aplicatiei $f$, asta inseamna ca $f\left(\alpha \right)=0\;\mathrm{si}\;f^{\prime } \left(\alpha \right)\;\not= \;0$.  Sistemul devine:
+\end{flushleft}
+\end{par}
+
+\begin{par}
+$$\begin{array}{l}
+f\left(x_k \right)=f\left(\alpha +R_k \right)=f^{\prime } \left(\alpha \right)+\frac{R_k^2 }{2!}\cdot f^{\prime \prime } \left(\alpha \right)+\frac{R_k^3 }{3!}\cdot f^{\left(3\right)} \left(\xi_k \right)\\
+f^{\prime } \left(x_k \right)=f^{\prime } \left(\alpha +R_k \right)=f^{\prime } \left(\alpha \right)+R_k \cdot {f^{\prime } }^{\prime } \left(\alpha \right)+\frac{R_k^2 }{2!}\cdot f^{\left(3\right)} \left(\eta_k \right)\\
+{f^{\prime } }^{\prime } \left(x_k \right)={f^{\prime } }^{\prime } \left(\alpha +R_k \right)={f^{\prime } }^{\prime } \left(\alpha \right)+R_k \cdot f^{\left(3\right)} \left(\gamma_k \right),\\
+\mathrm{unde}\;R_k =x_k -\alpha \;\;\mathrm{si}\;\xi_k ,\eta_k ,\gamma_k \in \left(\alpha ,x_k \right)\ldotp 
+\end{array}$$
+\end{par}
+
+\matlabheadingtwo{Rezolvarea iteratiei}
+
+\begin{matlabcode}
+syms Rk f1 f2 f3 real
+fk = f1*Rk + f2*Rk^2/2 + f3*Rk^3/6;
+fpk = f1 + f2*Rk + f3*Rk^2/2;
+fppk = f2 + f3*Rk;
+
+expr_Rkp1 = Rk - 2 * fk / (fpk * (1 + sqrt(1 - 2*fk*fppk / fpk^2)));
+simplify(expr_Rkp1)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+ans = 
+
+\hskip1em $\displaystyle \begin{array}{l}
+\textrm{Rk}-\frac{2\,\textrm{Rk}\,\left|\sigma_1 \right|\,{\left(f_3 \,{\textrm{Rk}}^2 +3\,f_2 \,\textrm{Rk}+6\,f_1 \right)}}{{\left(3\,\left|\sigma_1 \right|+\sqrt{3}\,\sqrt{-{\textrm{Rk}}^4 \,{f_3 }^2 -4\,f_2 \,{\textrm{Rk}}^3 \,f_3 -12\,{\textrm{Rk}}^2 \,f_1 \,f_3 +12\,{f_1 }^2 }\right)}\,\sigma_1 }\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 =f_3 \,{\textrm{Rk}}^2 +2\,f_2 \,\textrm{Rk}+2\,f_1 
+\end{array}$
+\end{matlabsymbolicoutput}
+
+
+\begin{par}
+\begin{flushleft}
+Rezulta iteratia: $\begin{array}{l}
+R_{k+1} =\frac{2R_k |f^{\left(3\right)} \left(\alpha \right)R_k^2 +2{f^{\prime } }^{\prime } \left(\alpha \right)R_k +2f^{\prime } \left(\alpha \right)|\left(f^{\left(3\right)} \left(\alpha \right)R_k^2 +3{f^{\prime } }^{\prime } \left(\alpha \right)R_k +6f^{\prime } \left(\alpha \right)\right)}{\left(3|f^{\left(3\right)} \left(\alpha \right)R_k^2 +2{f^{\prime } }^{\prime } \left(\alpha \right)R_k +2f^{\prime } \left(\alpha \right)|+\sqrt{3}\cdot \sqrt{-R_k^4 f^{\left(3\right)} {\left(\alpha \right)}^2 -4{f^{\prime } }^{\prime } \left(\alpha \right)R_k^3 f^{\left(3\right)} \left(\alpha \right)-12R_k^2 f^{\prime } \left(\alpha \right)f^{\left(3\right)} \left(\alpha \right)+12f^{\prime } {\left(\alpha \right)}^2 }\right)\cdot \left(f^{\left(3\right)} \left(\alpha \right)R_k^2 +2{f^{\prime } }^{\prime } \left(\alpha \right)R_k +2f^{\prime } \left(\alpha \right)\right)}\\
+f^{\prime } \left(\alpha \right)\;\mathrm{este}\;\mathrm{dominant}\;\mathrm{la}\;\mathrm{numarator},\mathrm{astfel}\;\mathrm{numarator}\approx 2R_k \cdot 2f^{\prime } \left(\alpha \right)\cdot 6f^{\prime } \left(\alpha \right)=24R_k f^{\prime } \left(\alpha \right)\ldotp \\
+\mathrm{Numitorul},\mathrm{la}\;\mathrm{simplificare},\mathrm{va}\;\mathrm{ajunge}\;\mathrm{la}\;\mathrm{ceva}\;\mathrm{proportional}\;\mathrm{cu}\;R_k^4 ,\mathrm{pentru}\;\mathrm{primul}\;\mathrm{termen}\;\mathrm{nenul}\;R_k \ldotp \mathrm{Astfel},\mathrm{dupa}\;\mathrm{simplificari}\;\mathrm{rezulta}:\\
+R_{k+1} =O\left(R_k^3 \right),\mathrm{deci}\;\mathrm{sirul}\;\mathrm{converge}\;\mathrm{cubic}\ldotp 
+\end{array}$
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+f = @(x) exp(x) - x .^ 2;
+df = @(x) exp(x) - 2 .* x;
+d2f = @(x) exp(x) - 2;
+
+[root, n_iter] = iter_method_cubic(f, df, d2f, 0.3);
+fprintf('Root: %.16e | No. iterations: %d\n', root, n_iter);
+\end{matlabcode}
+\begin{matlaboutput}
+Root: -7.0346742249839167e-01 | No. iterations: 4
+\end{matlaboutput}
+
+
+\begin{matlabcode}
+function [root, n_iter] = iter_method_cubic(f, df, d2f, x0, tol, max_iter)
+    %% ITER_METHOD_CUBIC = implementeaza metoda iterativa descrisa mai sus:
+    %  x_{k+1} = x_k - 2 * f(x_k) / (f'(x_k) * (1 + sqrt(1 - 2 * f(x_k) * 
+    % f''(x_k) / f'(x_k)^2)))
+    %
+    % Inputs:
+    %
+    % f         - functia de aproximat;
+    % df        - prima derivata a functiei;
+    % d2f       - a doua derivata a functiei;
+    % x0        - nodul de pornire;
+    % tol       - eroarea de aproximare admisa;
+    % max_iter  - numarul maxim de iteratii;
+    %
+    % Outputs:
+    %
+    % root      - radacina aproximata;
+    % n_iter    - numarul de iteratii;
+    % Eroare: impartire la 0/radical imaginar sau daca nu converge 
+    % in numarul maxim de iteratii.
+
+    if nargin < 4
+        x0 = 0;
+    end
+    if nargin < 5
+        tol = 1e-6;
+    end
+    if nargin < 6
+        max_iter = 100;
+    end
+
+    root = x0;
+    for n_iter = 1:max_iter
+        fxk = f(root);
+        dfxk = df(root);
+        d2fxk = d2f(root);
+
+        b = dfxk .* (1 + sqrt(1 - (2 .* fxk .* d2fxk) ./ dfxk .^ 2));
+        if abs(b) < eps || ~isreal(b)
+            error('Zero division or non-real radical')
+        end
+        
+        xknext = root - 2 .* fxk/b;
+        if abs(xknext - root) < tol
+            root = xknext;
+            return;
+        end
+
+        root = xknext;
+    end
+
+    warning('No convergence in %d iterations!', max_iter);
+end
+\end{matlabcode}
+
+\end{document}
